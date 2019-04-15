@@ -1,0 +1,236 @@
+Crear carpeta para nuestro Proyecto
+Crear package.json   ------- npm int
+Definir datos entrada package.json
+Instalar dependencias para nuestro proyecto, 
+
+    - nodemon: permite que los cambios de nuestro proyecto lo recargue
+    - express: servidor para desarrollo con graphql
+    - babel: soporte de ecmascript reciente en navegadores
+
+     comandos  ---- npm install --save nodemon express
+
+     comandos  ---- npm instal --save-dev babel-cli babel-presets-env  babel-presets-stage-0
+
+ABRR CARPETA EN VSCODE
+
+    Crear archivo .babelrc
+
+    añadir configuracion para permitir ejecutar ultimas caracteristicas ecma
+
+        {
+        "presets": [
+            "env",
+            "stage-0"
+        ]
+    }
+
+    Añadir configuracion en packege.json
+
+        {
+        "name": "grapq",
+        "version": "1.0.0",
+        "description": "grap servidor",
+        "main": "index.js",
+        "scripts": {
+            //añadir linea nodemon, entrypoint y babel
+            "start": "nodemon ./index.js --exec babel-node -e js"
+        },
+        "author": "javier soto",
+        "license": "ISC",
+        "dependencies": {
+            "express": "^4.16.4",
+            "express-graphql": "^0.7.1",
+            "graphql": "^14.2.1",
+            "nodemon": "^1.18.11"
+        },
+        "devDependencies": {
+            "babel-cli": "^6.26.0",
+            "babel-preset-env": "^1.7.0",
+            "babel-preset-stage-0": "^6.24.1"
+        }
+        }       
+
+
+CONFIGURAR SERVIDOR EXPRESSS
+
+    import express from 'express';
+
+    const app = express();
+
+    app.get('/', (req, res) =>{
+        res.send('todo listo');
+    });
+
+    app.listen(8000, () => console.log('el servidor esta funcionando') );
+
+
+
+INSTALAR SERVIDOR graphql
+
+    import graphqlHTTP from 'express-graphql';
+
+    import schema from './schema';
+
+    crear archivo schema para probar servidor
+
+        import {buildSchema} from 'graphql';
+
+        const schema = buildSchema(`
+            type Cliente{
+                id: ID
+                nombre: String
+                apellido: String
+                empresa: String
+                email: String
+            }
+            type Query{
+                cliente:Cliente
+            }
+
+        `);
+
+        export default schema;
+
+
+        importar a index.js schema y conectar express con grahpql
+
+        import graphqlHTTP from 'express-graphql';
+        import schema from './schema';
+
+
+        crear resolver o respuesta del servidor 
+
+            //resolver
+
+            const root = {cliente: () => {
+                return{
+                    "id" : 187878554,
+                    "nombre" : "Juan Pablo",
+                    "apellido" : "de la Torre",
+                    "empresa" : "Udemy",
+                    "email" : "jp@dcorreo.com"
+                }
+            }};
+
+
+            app.use('/graphql', graphqlHTTP({
+            // schema a utilizar
+            schema,
+            //pasar resolver como rootValue
+            rootValue:root,
+            //utilizar graphql
+            graphiql : true
+         }));
+
+----------------------------
+CREAR MUTATION EN EL SCHEMA
+
+    type Mutation{
+        crearCliente(input: ClienteInput) : Cliente
+    }
+
+    -Crear el input 
+
+        input ClienteInput{
+        id: ID
+        nombre: String!
+        apellido: String!
+        empresa: String!
+        email: String
+    }
+
+    -en el index.js  creamos la clase, la base de datos
+
+            class Cliente{
+            constructor(id, {nombre, apellido, empresa, email}){
+                this.id = id;
+                this.id = nombre;
+                this.id = apellido;
+                this.id = empresa;
+                this.id = email;
+                
+            }
+        }
+
+        const clientesDB = {};
+
+        -creamos el input con id aleatorio de 10 hexadecimal
+
+        crearCliente : ({input}) => {
+        const id = require('crypto').randomBytes(10).toString('hex');
+    }
+
+
+    ---------------------------------------------
+Instañar librerias para importar y autoejecutable
+    npm install --save graphql-tools graphql-import
+
+
+--------------------------------------------------
+
+Intalar mongo
+
+    -Entrar a la web oficial, descargar mongo
+    -configurar path en variables del sistema, editar
+    -pegar C:\Program Files\MongoDB\Server\4.0\bin
+    -abrir cmd crear carpeta donde mongo almacenara 
+            md \data
+            md \data\db
+        luego ejecutar comando para ejecutar servicio --- mongod
+
+Ejecutar shel de mongo con el comando   
+    --- mongo
+
+
+Instalar mongoose
+    npm install --save mongoose
+
+
+------------------------------------
+
+
+
+Intalar apollo
+    -npm install --save apollo-server-express
+
+    
+Crear carpeta cliente y posicionarse en ella
+Instalar React
+    -npm install -g create-react-app
+
+    -create-react-app cliente
+
+    integracion con apollo react y graphql
+
+    npm install --save apollo-boost react-apollo graphql graphql-tag
+
+
+Iniciar react
+    -npm start
+
+Configurar react app.js
+
+    -import {ApolloProvider} from 'react-apollo';
+    -import ApolloClient from 'apollo-boost';
+
+
+Crear instancia en react para conectarse a apollo y a graphql
+
+    const client = new ApolloClient ({
+        uri: "http://localhost:4000/graphql",
+        onError: ({networkError, graphQLErrors}) =>{
+        console.log('graphQLErrors', graphQLErrors);
+        console.log('networkError', networkError);
+        }
+    })
+
+Incrustar apollo en react
+    class App extends Component {
+  render() {
+    return (
+     <ApolloProvider client={client}>
+        
+     </ApolloProvider>
+    );
+  }
+}
