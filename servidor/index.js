@@ -11,4 +11,4 @@ const server = new ApolloServer({typeDefs, resolvers});
 
 server.applyMiddleware({app});
 
-app.listen({port: 4000}, () => console.log(`el servidor inicio http://localhost:4000${server.graphqlPath} `));
+app.listen({port: 4000}, () => console.log(`el servidor inicio http://localhost:4000${server.graphqlPath}`));
