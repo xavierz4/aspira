@@ -10,6 +10,8 @@ type Cliente{
     
 }
 
+
+
 type Email{
     email:String
 }
@@ -52,8 +54,12 @@ input ClienteInput{
     
 }
 
+
+
 type Mutation{
     crearCliente(input: ClienteInput) : Cliente
     actualizarCliente(input: ClienteInput): Cliente
     eliminarCliente(id:ID!): String 
+    
+
 }
