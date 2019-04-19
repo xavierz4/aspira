@@ -1,20 +1,22 @@
+
 import mongoose from 'mongoose';
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect('mongodb://localhost/clientes', {useNewUrlParser:true});
+mongoose.connect('mongodb://localhost/electores', {useNewUrlParser:true});
 
-const clientesSchema = new mongoose.Schema({
+const electoresSchema = new mongoose.Schema({
     nombre : String,
     apellido : String,
-    empresa : String,
-    emails: Array,
+    cedula : Number,
     edad : Number,
-    tipo : String,
+    genero: String,
+    email: String,
+    rol: String,
     pedidos : Array
 
 
 });
 
-const Clientes = mongoose.model('clientes', clientesSchema);
-export {Clientes};
+const Electores = mongoose.model('electores', electoresSchema);
+export {Electores};

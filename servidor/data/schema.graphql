@@ -1,12 +1,14 @@
-type Cliente{
+
+type Elector{
     id: ID
     nombre: String
     apellido: String
-    empresa: String
-    email: String
+    cedula: Int
     edad: Int
-    tipo: tipoCliente
-    pedidos: [Pedido]
+    genero:String
+    email: String
+    rol: String
+    
     
 }
 
@@ -21,15 +23,17 @@ type Pedido{
     precio: Int
 }
 
-enum tipoCliente{
-    BASICO
-    PREMIUM
+enum rolElector{
+    VOTANTE
+    LIDER DE NUCLEO
+    COORDINADOR
+    AMBOS
 }
 
 
 type Query{
-    getClientes(limite: Int) : [Cliente]
-    getCliente (id:ID) : Cliente
+    getElector(limite: Int) : [Elector]
+    getElector (id:ID) : Elector
 }
 
 input PedidoInput{
@@ -42,14 +46,15 @@ input EmailInput{
 }
 
 
-input ClienteInput{
+input ElectorInput{
     id: ID
     nombre: String!
     apellido: String!
-    empresa: String!
-    email:String!
+    cedula: Int!
     edad: Int!
-    tipo: tipoCliente
+    genero: String!
+    email:String!
+    rol: rolElector
     pedidos: [PedidoInput]
     
 }
@@ -57,9 +62,9 @@ input ClienteInput{
 
 
 type Mutation{
-    crearCliente(input: ClienteInput) : Cliente
-    actualizarCliente(input: ClienteInput): Cliente
-    eliminarCliente(id:ID!): String 
+    crearElector(input: ElectorInput) : Elector
+    actualizarElector(input: ElectorInput): Elector
+    eliminarElector(id:ID!): String 
     
 
 }
