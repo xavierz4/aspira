@@ -19,7 +19,7 @@ export const resolvers = {
                     else resolve(elector)
                 });
             })
-            return new Elector (id, electorDB[id]);
+            return new Elector (id, electoresDB[id]);
 
         },
     },
