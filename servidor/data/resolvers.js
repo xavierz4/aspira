@@ -1,56 +1,57 @@
 import mongoose from 'mongoose';
-import {Clientes} from './db';
+import {Elector} from './db';
 import {rejects} from 'assert';
 
 export const resolvers = {
     Query: {
 
-        getClientes: (root, {limite}) => {
-            return Clientes.find({}).limit(limite)
+        getElectores: (root, {limite}) => {
+            return Electores.find({}).limit(limite)
 
         },
 
-        getCliente: (root, {id}) => {
+        getElector: (root, {id}) => {
             return new Promise((resolve, object) =>{
-                Clientes.findById(id,(error, cliente) =>{
+                Electores.findById(id,(error, elector) =>{
                     if(error) rejects(error)
-                    else resolve(cliente)
+                    else resolve(elector)
                 });
             })
-            return new Cliente (id, clientesDB[id]);
+            return new Elector (id, electorDB[id]);
 
         },
     },
     Mutation:{
-        crearCliente : (root, {input}) => {
-            const nuevoCliente = new Clientes({
+        crearElector : (root, {input}) => {
+            const nuevoCliente = new Electores({
                
                 nombre : input.nombre,
                 apellido : input.apellido,
-                empresa : input.empresa,
-                emails : input.emails,
+                cedula : input.empresa,
                 edad : input.edad,
-                tipo : input.tipo,
+                genero : input.genero,
+                email : input.email,
+                rol : input.rol,
                 pedidos : input.pedidos
 
             });
-            nuevoCliente.id = nuevoCliente._id;
+            nuevoElector.id = nuevoElector._id;
 
             return new Promise((resolve, object) => {
-                nuevoCliente.save((error) => {
+                nuevoElector.save((error) => {
                     if(error) rejects (error)
-                    else resolve(nuevoCliente)
+                    else resolve(nuevoElector)
                 })
             });
       
         },
 
-        actualizarCliente : (root, {input}) => {
+        actualizarElector : (root, {input}) => {
             return new Promise((resolve, object) => {
-                Clientes.findOneAndUpdate({_id: input.id}, input, {new: true}, (error, cliente) =>
+                Electores.findOneAndUpdate({_id: input.id}, input, {new: true}, (error, elector) =>
                 {
                     if(error) rejects (error)
-                    else resolve (cliente)
+                    else resolve (elector)
                 });
                 
             });
@@ -58,9 +59,9 @@ export const resolvers = {
             
             },
 
-        eliminarCliente : (root, {id}) => {
+        eliminarElector : (root, {id}) => {
         return new Promise((resolve, object) => {
-            Clientes.findOneAndRemove({_id: id}, (error) =>
+            Electores.findOneAndRemove({_id: id}, (error) =>
             {
                 if(error) rejects (error)
                 else resolve ("se Elimino Correctamente")
