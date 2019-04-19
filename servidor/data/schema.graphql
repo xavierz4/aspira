@@ -7,8 +7,6 @@ type Elector{
     edad: Int
     genero:String
     email: String
-    rol: String
-    
     
 }
 
@@ -23,7 +21,7 @@ type Pedido{
     precio: Int
 }
 
-enum rolElector{
+enum rol{
     VOTANTE
     LIDER DE NUCLEO
     COORDINADOR
@@ -48,14 +46,13 @@ input EmailInput{
 
 input ElectorInput{
     id: ID
-    nombre: String!
-    apellido: String!
-    cedula: Int!
-    edad: Int!
-    genero: String!
-    email:String!
-    rol: rolElector
-    pedidos: [PedidoInput]
+    nombre: String
+    apellido: String
+    cedula: Int
+    edad: Int
+    genero: String
+    email:String
+    
     
 }
 

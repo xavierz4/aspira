@@ -12,8 +12,7 @@ const electoresSchema = new mongoose.Schema({
     edad : Number,
     genero: String,
     email: String,
-    rol: String,
-    pedidos : Array
+    
 
 
 });

@@ -25,16 +25,15 @@ export const resolvers = {
     },
     Mutation:{
         crearElector : (root, {input}) => {
-            const nuevoCliente = new Electores({
+            const nuevoElector = new Electores({
                
                 nombre : input.nombre,
                 apellido : input.apellido,
                 cedula : input.empresa,
                 edad : input.edad,
                 genero : input.genero,
-                email : input.email,
-                rol : input.rol,
-                pedidos : input.pedidos
+                email : input.email
+                
 
             });
             nuevoElector.id = nuevoElector._id;
