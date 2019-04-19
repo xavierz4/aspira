@@ -8,6 +8,7 @@ type Elector{
     genero:String
     email: String
     
+    
 }
 
 
@@ -22,10 +23,9 @@ type Pedido{
 }
 
 enum rol{
-    VOTANTE
     LIDER DE NUCLEO
     COORDINADOR
-    AMBOS
+    
 }
 
 
@@ -52,6 +52,7 @@ input ElectorInput{
     edad: Int
     genero: String
     email:String
+   
     
     
 }
