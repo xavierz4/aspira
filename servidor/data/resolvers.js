@@ -1,7 +1,7 @@
 
 
 import mongoose from 'mongoose';
-import {Elector} from './db';
+import {Electores} from './db';
 import {rejects} from 'assert';
 
 export const resolvers = {
