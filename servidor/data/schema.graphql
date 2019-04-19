@@ -1,5 +1,5 @@
 
-type Elector{
+type Electores{
     id: ID
     nombre: String
     apellido: String
@@ -32,7 +32,7 @@ enum rolElector{
 
 
 type Query{
-    getElector(limite: Int) : [Elector]
+    getElectores(limite: Int) : [Elector]
     getElector (id:ID) : Elector
 }
 
