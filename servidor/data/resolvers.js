@@ -1,5 +1,3 @@
-
-
 import mongoose from 'mongoose';
 import {Electores} from './db';
 import {rejects} from 'assert';
@@ -29,10 +27,10 @@ export const resolvers = {
                
                 nombre : input.nombre,
                 apellido : input.apellido,
-                cedula : input.empresa,
+                cedula : input.cedula,
                 edad : input.edad,
-                genero : input.genero,
-                email : input.email
+                genero : input.genero
+                email: input.email,
                 
 
             });

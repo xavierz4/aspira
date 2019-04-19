@@ -1,4 +1,3 @@
-
 import mongoose from 'mongoose';
 
 mongoose.Promise = global.Promise;
@@ -10,8 +9,8 @@ const electoresSchema = new mongoose.Schema({
     apellido : String,
     cedula : Number,
     edad : Number,
-    genero: String,
-    email: String,
+    genero : String,
+    email: String
     
 
 

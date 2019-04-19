@@ -1,17 +1,15 @@
-
 type Elector{
     id: ID
     nombre: String
     apellido: String
     cedula: Int
     edad: Int
-    genero:String
+    genero: String
     email: String
     
     
+    
 }
-
-
 
 type Email{
     email:String
@@ -22,10 +20,9 @@ type Pedido{
     precio: Int
 }
 
-enum rol{
-    LIDER DE NUCLEO
-    COORDINADOR
-    
+enum tipoElector{
+    BASICO
+    PREMIUM
 }
 
 
@@ -46,23 +43,18 @@ input EmailInput{
 
 input ElectorInput{
     id: ID
-    nombre: String
-    apellido: String
-    cedula: Int
-    edad: Int
-    genero: String
-    email:String
-   
+    nombre: String!
+    apellido: String!
+    cedula: Int!
+    edad: Int!
+    genero: String!
+    email:String!
     
     
 }
-
-
 
 type Mutation{
     crearElector(input: ElectorInput) : Elector
     actualizarElector(input: ElectorInput): Elector
     eliminarElector(id:ID!): String 
-    
-
 }
