@@ -48,7 +48,7 @@ input ElectorInput{
     cedula: Int!
     edad: Int!
     genero: String!
-    email:String!
+    email:String
     
     
 }
