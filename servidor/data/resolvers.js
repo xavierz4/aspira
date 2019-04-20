@@ -29,8 +29,8 @@ export const resolvers = {
                 apellido : input.apellido,
                 cedula : input.cedula,
                 edad : input.edad,
-                genero : input.genero
-                email: input.email,
+                genero : input.genero,
+                email: input.email
                 
 
             });
