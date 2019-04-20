@@ -4,7 +4,7 @@ type Elector{
     apellido: String
     cedula: Int
     edad: Int
-    genero: String
+    genero: tipoGenero
     email: String
     
     
@@ -20,9 +20,9 @@ type Pedido{
     precio: Int
 }
 
-enum tipoElector{
-    BASICO
-    PREMIUM
+enum tipoGenero{
+    FEMENINO
+    MASCULINO
 }
 
 
@@ -47,7 +47,7 @@ input ElectorInput{
     apellido: String!
     cedula: Int!
     edad: Int!
-    genero: String!
+    genero: tipoGenero
     email:String
     
     
