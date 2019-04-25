@@ -5,8 +5,8 @@ import {rejects} from 'assert';
 export const resolvers = {
     Query: {
 
-        getClientes: (root, {limite}) => {
-            return Clientes.find({}).limit(limite)
+        getClientes: (root, {limite, offset}) => {
+            return Clientes.find({}).limit(limite).skip(offset)
 
         },
 
