@@ -60,7 +60,7 @@ export const resolvers = {
 
         eliminarElector : (root, {id}) => {
         return new Promise((resolve, object) => {
-            Electores.findOneAndRemove({_id: id}, (error) =>
+            Electores.findOneAndDelete({_id: id}, (error) =>
             {
                 if(error) rejects (error)
                 else resolve ("se Elimino Correctamente")
