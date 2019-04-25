@@ -27,7 +27,7 @@ enum tipoGenero{
 
 
 type Query{
-    getElectores(limite: Int) : [Elector]
+    getElectores(limite: Int, offset:Int) : [Elector]
     getElector (id:ID) : Elector
 }
 
