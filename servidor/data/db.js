@@ -16,5 +16,7 @@ const electoresSchema = new mongoose.Schema({
 
 });
 
+
+
 const Electores = mongoose.model('electores', electoresSchema);
 export {Electores};
