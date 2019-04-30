@@ -16,10 +16,20 @@ export const resolvers = {
                     if(error) rejects(error)
                     else resolve(cliente)
                 });
-            })
-            return new Cliente (id, clientesDB[id]);
+            });
+           
 
         },
+        
+        totalClientes : (root) => {
+            return new Promise((resolve, object) =>{
+                Clientes.countDocuments({},(error, count) => {
+                    if(error) rejects(error) 
+                    else resolve(count)
+                })
+            })
+
+        }
     },
     Mutation:{
         crearCliente : (root, {input}) => {
