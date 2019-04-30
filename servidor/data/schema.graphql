@@ -29,6 +29,7 @@ enum tipoGenero{
 type Query{
     getElectores(limite: Int, offset:Int) : [Elector]
     getElector (id:ID) : Elector
+    totalElectores: String
 }
 
 input PedidoInput{

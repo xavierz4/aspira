@@ -17,9 +17,18 @@ export const resolvers = {
                     else resolve(elector)
                 });
             })
-            return new Elector (id, electoresDB[id]);
+            
 
         },
+        totalElectores : (root) => {
+            return new Promise((resolve, object) =>{
+                Electores.countDocuments({},(error, count) => {
+                    if(error) rejects(error) 
+                    else resolve(count)
+                })
+            })
+
+        }
     },
     Mutation:{
         crearElector : (root, {input}) => {
