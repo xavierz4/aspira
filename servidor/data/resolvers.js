@@ -16,7 +16,7 @@ export const resolvers = {
                     if(error) rejects(error)
                     else resolve(elector)
                 });
-            })
+            });
             
 
         },
