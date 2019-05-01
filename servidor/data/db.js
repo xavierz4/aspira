@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect('mongodb://localhost/electores', {useNewUrlParser:true});
+mongoose.connect('mongodb://localhost/clientes', {useNewUrlParser:true});
 
 const electoresSchema = new mongoose.Schema({
     nombre : String,
